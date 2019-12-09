@@ -45,29 +45,34 @@
   };
 </script>
 
-  <meta name="keywords" content="developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="linlufeng">
-<meta property="og:url" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;index.html">
+  <meta name="description" content="前言SDK即（Software Development Kit）的缩写，意思是软件开发工具包。它能够帮助开发者在软件中快速构需要的功能模块，而仅仅只需要写入少量的代码。在软件开发过程中，你一定有过这样的场景：A项目中的功能某块功能曾经在B项目中也出现过，重写的话会造成公司资源的严重浪费。有一定规模的公司，生产过程中往往会累积很多技术经验和成果，这时候选择将一些通用的成果封装成SDK，可以满足公司在">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SDK Develop for iOS">
+<meta property="og:url" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;index.html">
 <meta property="og:site_name" content="linlufeng">
+<meta property="og:description" content="前言SDK即（Software Development Kit）的缩写，意思是软件开发工具包。它能够帮助开发者在软件中快速构需要的功能模块，而仅仅只需要写入少量的代码。在软件开发过程中，你一定有过这样的场景：A项目中的功能某块功能曾经在B项目中也出现过，重写的话会造成公司资源的严重浪费。有一定规模的公司，生产过程中往往会累积很多技术经验和成果，这时候选择将一些通用的成果封装成SDK，可以满足公司在">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;.io&#x2F;&#x2F;step1.png">
+<meta property="og:updated_time" content="2019-12-09T09:59:42.645Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;.io&#x2F;&#x2F;step1.png">
 
-<link rel="canonical" href="http://linlufeng.github.io/">
+<link rel="canonical" href="http://linlufeng.github.io/2019/12/06/SDK-Develop-for-iOS/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>linlufeng</title>
+  <title>SDK Develop for iOS | linlufeng</title>
   
 
 
@@ -170,10 +175,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://linlufeng.github.io/2019/12/06/SDK-Develop-for-iOS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -187,8 +192,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/06/SDK-Develop-for-iOS/" class="post-title-link" itemprop="url">SDK Develop for iOS</a>
+          SDK Develop for iOS
         </h1>
 
         <div class="post-meta">
@@ -219,7 +223,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>SDK即（<strong>Software Development Kit</strong>）的缩写，意思是软件开发工具包。它能够帮助开发者在软件中快速构需要的功能模块，而仅仅只需要写入少量的代码。在软件开发过程中，你一定有过这样的场景：A项目中的功能某块功能曾经在B项目中也出现过，重写的话会造成公司资源的严重浪费。有一定规模的公司，生产过程中往往会累积很多技术经验和成果，这时候选择将一些通用的成果封装成SDK，可以满足公司在各种业务场景下的需要，快速组建app。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>SDK即（<strong>Software Development Kit</strong>）的缩写，意思是软件开发工具包。它能够帮助开发者在软件中快速构需要的功能模块，而仅仅只需要写入少量的代码。在软件开发过程中，你一定有过这样的场景：A项目中的功能某块功能曾经在B项目中也出现过，重写的话会造成公司资源的严重浪费。有一定规模的公司，生产过程中往往会累积很多技术经验和成果，这时候选择将一些通用的成果封装成SDK，可以满足公司在各种业务场景下的需要，快速组建app。</p>
 <h1 id="iOS-SDK"><a href="#iOS-SDK" class="headerlink" title="iOS SDK"></a>iOS SDK</h1><h4 id="iOS-SDK分类"><a href="#iOS-SDK分类" class="headerlink" title="iOS SDK分类"></a>iOS SDK分类</h4><p>iOS SDK一般可以分为两大类：一类是<strong>.framework</strong>和<strong>.a</strong>另外一类iOS系统自带的<strong>.dylib</strong>(<strong>.tbd</strong>)。出于<strong>安全</strong>以及绕过<strong>审核</strong>等原因苹果不允许开发者使用<strong>.dylib</strong>、<strong>.tbd</strong>方式的库进行开发，所以不在文中讨论这类库文件，这里只讨论<strong>.framework</strong>和<strong>.a</strong>的开发和使用。</p>
 <h4 id="framework和-a"><a href="#framework和-a" class="headerlink" title=".framework和.a"></a>.framework和.a</h4><p>这里有一个误区，不少人认为：<strong>.framework</strong>是属于动态库<strong>.a</strong>属于静态库。<strong>.a</strong>是静态库这边没有太大疑问，其实<strong>.framework</strong>是静态库还是动态库主要和<strong>Xcode–&gt;Buld Setting–&gt;Linking–&gt;Mach-O Type</strong>配置选项有关，即<strong>Static Library</strong>用于编译静态和<strong>Dynamic Library</strong>用于编译动态库。在使用静态库时，把库拖进工程，设置好<strong>library search path</strong>即可使用；在使用动态库时，多一个步骤，要在<strong>Build Settings–&gt;General–&gt;Embeeded Binaries</strong>中<strong>add</strong>一下，否则应用启动时会因为找不到文件而崩溃。另外选择<strong>Static Library</strong>方式打包出来的库文件通常要比选择<strong>Dynamic Library</strong>方式打包出来的库文件体积要大，<strong>Static Library</strong>方式打包出来的库会被一起编译Link进应用程序的可执行二进制文件中，<strong>Dynamic Library</strong>方式打包出来的库只是被完整地拷贝到应用的沙盒里。</p>
 <h4 id="如何制作iOS-SDK"><a href="#如何制作iOS-SDK" class="headerlink" title="如何制作iOS SDK"></a>如何制作iOS SDK</h4><p>这边以<strong>.framework</strong>为例</p>
@@ -300,85 +304,36 @@
 <h4 id="本文参考："><a href="#本文参考：" class="headerlink" title="本文参考："></a>本文参考：</h4><p><a href="https://www.jianshu.com/p/71c75c287d26" target="_blank" rel="noopener">https://www.jianshu.com/p/71c75c287d26</a></p>
 <p><a href="https://www.jianshu.com/p/cf86532be5e4" target="_blank" rel="noopener">https://www.jianshu.com/p/cf86532be5e4</a></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://linlufeng.github.io/2019/12/04/Hello-Hexo/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="linlufeng">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linlufeng">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/04/Hello-Hexo/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-12-04 11:22:19 / 修改时间：05:56:33" itemprop="dateCreated datePublished" datetime="2019-12-04T11:22:19Z">2019-12-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hello World！My name is lin lufeng，an iOS Developer.</p>
-<p>国际惯例，技术开发人学习新的东西，先从一句Hello World开始。</p>
-<p>本博客是参考网上<a href="https://eirunye.github.io/2018/09/01/Hexo搭建GitHub博客—初级一/#more" target="_blank" rel="noopener" title="教程">教程</a>通过<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener" title="Hexo">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener" title="Github">Github</a>搭建起来的，🙏感谢大佬们。刚毕业那会用新浪博客写一些技术记录或者摘抄，后来由于太懒一年左右就放弃不更新了，一些零零散散写过的控件也只保留在自己的硬盘里。想要重新养成好的学习和工作习惯，所以搭建了该博客。</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/04/Hello-Hexo/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -407,6 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-SDK"><span class="nav-number">2.</span> <span class="nav-text">iOS SDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS-SDK分类"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">iOS SDK分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#framework和-a"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">.framework和.a</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何制作iOS-SDK"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">如何制作iOS SDK</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发SDK期间遇到一些问题"><span class="nav-number">3.</span> <span class="nav-text">开发SDK期间遇到一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口设计"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">接口设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#是否使用第三方库"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">是否使用第三方库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#埋点-日志"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">埋点/日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SDK资源包-bunlde-文件"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">SDK资源包 .bunlde 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文档"><span class="nav-number">3.0.0.5.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#测试-维护"><span class="nav-number">3.0.0.5.1.</span> <span class="nav-text">测试/维护</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本文参考："><span class="nav-number">3.0.0.6.</span> <span class="nav-text">本文参考：</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
