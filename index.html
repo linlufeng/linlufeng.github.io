@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-09 09:59:42" itemprop="dateModified" datetime="2019-12-09T09:59:42Z">2019-12-09</time>
+                <time title="修改时间：2019-12-09 10:17:26" itemprop="dateModified" datetime="2019-12-09T10:17:26Z">2019-12-09</time>
               </span>
 
           
@@ -225,25 +225,37 @@
 <h4 id="如何制作iOS-SDK"><a href="#如何制作iOS-SDK" class="headerlink" title="如何制作iOS SDK"></a>如何制作iOS SDK</h4><p>这边以<strong>.framework</strong>为例</p>
 <ol>
 <li><p>新建工程-选择Framework</p>
-<p><img src="/.io//step1.png" alt></p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step1.png" alt="step1"></p>
 </li>
 </ol>
 <ol start="2">
 <li><p>为你的工程取一个漂亮的名字</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step2.png" alt="step2"></p>
 </li>
 <li><p>选择Deployment info(即SDK运行环境)</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step3.png" alt="step3"></p>
 </li>
 <li><p>选择Xcode–&gt;Buld Setting–&gt;Linking–&gt;Mach-O Type，这边我选择Static Library</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step4.png" alt="step4"></p>
 </li>
 <li><p>导入或新建你的业务代码</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step5.png" alt="step5"></p>
 </li>
 <li><p>设置要暴露的头文件</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step6-1.png" alt="step6-1"></p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step6-2.png" alt="step6-2"></p>
 </li>
-<li><p>设置依赖库</p>
+</ol>
+<ol start="7">
+<li><p>设置工程依赖的库文件</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step7.png" alt="step7"></p>
 </li>
 <li><p>Build编译</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step8-1.png" alt="step8"></p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step8-2.png" alt="step8-2"></p>
 </li>
 <li><p>Lipo 命令合并真机&amp;模拟器的库文件</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step9.png" alt="step9"></p>
 <p>选择工程目录Products–&gt;had.framework–&gt;Show in Finder找到最终生成文件目录，开打终端cd /Users/lufenglin/Library/Developer/Xcode/DerivedData/hsad-ghfesjzgbkhknjgxibruriubnqiq/Build/Products </p>
 <p>合并</p>
 <p>lipo -create ./Release-iphoneos/hsad.framework/hsad ./Release-iphonesimulator/hsad.framework/hsad -output hsad</p>

@@ -53,10 +53,20 @@
 <meta property="og:site_name" content="linlufeng">
 <meta property="og:description" content="前言SDK即（Software Development Kit）的缩写，意思是软件开发工具包。它能够帮助开发者在软件中快速构需要的功能模块，而仅仅只需要写入少量的代码。在软件开发过程中，你一定有过这样的场景：A项目中的功能某块功能曾经在B项目中也出现过，重写的话会造成公司资源的严重浪费。有一定规模的公司，生产过程中往往会累积很多技术经验和成果，这时候选择将一些通用的成果封装成SDK，可以满足公司在">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;.io&#x2F;&#x2F;step1.png">
-<meta property="og:updated_time" content="2019-12-09T09:59:42.645Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step6-1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step6-2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step8-1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step8-2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step9.png">
+<meta property="og:updated_time" content="2019-12-09T10:17:26.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;.io&#x2F;&#x2F;step1.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;06&#x2F;SDK-Develop-for-iOS&#x2F;step1.png">
 
 <link rel="canonical" href="http://linlufeng.github.io/2019/12/06/SDK-Develop-for-iOS/">
 
@@ -209,7 +219,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-09 09:59:42" itemprop="dateModified" datetime="2019-12-09T09:59:42Z">2019-12-09</time>
+                <time title="修改时间：2019-12-09 10:17:26" itemprop="dateModified" datetime="2019-12-09T10:17:26Z">2019-12-09</time>
               </span>
 
           
@@ -229,25 +239,37 @@
 <h4 id="如何制作iOS-SDK"><a href="#如何制作iOS-SDK" class="headerlink" title="如何制作iOS SDK"></a>如何制作iOS SDK</h4><p>这边以<strong>.framework</strong>为例</p>
 <ol>
 <li><p>新建工程-选择Framework</p>
-<p><img src="/.io//step1.png" alt></p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step1.png" alt="step1"></p>
 </li>
 </ol>
 <ol start="2">
 <li><p>为你的工程取一个漂亮的名字</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step2.png" alt="step2"></p>
 </li>
 <li><p>选择Deployment info(即SDK运行环境)</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step3.png" alt="step3"></p>
 </li>
 <li><p>选择Xcode–&gt;Buld Setting–&gt;Linking–&gt;Mach-O Type，这边我选择Static Library</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step4.png" alt="step4"></p>
 </li>
 <li><p>导入或新建你的业务代码</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step5.png" alt="step5"></p>
 </li>
 <li><p>设置要暴露的头文件</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step6-1.png" alt="step6-1"></p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step6-2.png" alt="step6-2"></p>
 </li>
-<li><p>设置依赖库</p>
+</ol>
+<ol start="7">
+<li><p>设置工程依赖的库文件</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step7.png" alt="step7"></p>
 </li>
 <li><p>Build编译</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step8-1.png" alt="step8"></p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step8-2.png" alt="step8-2"></p>
 </li>
 <li><p>Lipo 命令合并真机&amp;模拟器的库文件</p>
+<p><img src="/2019/12/06/SDK-Develop-for-iOS/step9.png" alt="step9"></p>
 <p>选择工程目录Products–&gt;had.framework–&gt;Show in Finder找到最终生成文件目录，开打终端cd /Users/lufenglin/Library/Developer/Xcode/DerivedData/hsad-ghfesjzgbkhknjgxibruriubnqiq/Build/Products </p>
 <p>合并</p>
 <p>lipo -create ./Release-iphoneos/hsad.framework/hsad ./Release-iphonesimulator/hsad.framework/hsad -output hsad</p>
