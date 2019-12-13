@@ -45,29 +45,32 @@
   };
 </script>
 
-  <meta name="keywords" content="developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="linlufeng">
-<meta property="og:url" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;index.html">
+  <meta name="description" content="前言最近公司准备开发的一款阅读App中需要同时加入“广点通”以及“穿山甲”平台的广告SDK，由于这款App还涉及到第三方一起开发，所以要求把广告模块合并成一个SDK进行统一管理。 重载&amp;amp;重写的概念重载（overload）：函数名相同，函数的参数列表不同(包括参数个数和参数类型)，至于返回类型可同可不同。重载既可以发生在同一个类的不同函数之间，也可发生在父类子类的继承关系之间，其中发生在父类">
+<meta name="keywords" content="developer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SDK二次开发遇到Delegate方法同名问题">
+<meta property="og:url" content="http:&#x2F;&#x2F;linlufeng.github.io&#x2F;2019&#x2F;12&#x2F;14&#x2F;SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0Delegate%E6%96%B9%E6%B3%95%E5%90%8C%E5%90%8D%E9%97%AE%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="linlufeng">
+<meta property="og:description" content="前言最近公司准备开发的一款阅读App中需要同时加入“广点通”以及“穿山甲”平台的广告SDK，由于这款App还涉及到第三方一起开发，所以要求把广告模块合并成一个SDK进行统一管理。 重载&amp;amp;重写的概念重载（overload）：函数名相同，函数的参数列表不同(包括参数个数和参数类型)，至于返回类型可同可不同。重载既可以发生在同一个类的不同函数之间，也可发生在父类子类的继承关系之间，其中发生在父类">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-13T10:30:57.921Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://linlufeng.github.io/">
+<link rel="canonical" href="http://linlufeng.github.io/2019/12/14/SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0Delegate%E6%96%B9%E6%B3%95%E5%90%8C%E5%90%8D%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>linlufeng</title>
+  <title>SDK二次开发遇到Delegate方法同名问题 | linlufeng</title>
   
 
 
@@ -173,10 +176,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://linlufeng.github.io/2019/12/14/SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0Delegate%E6%96%B9%E6%B3%95%E5%90%8C%E5%90%8D%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -190,8 +193,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/14/SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0Delegate%E6%96%B9%E6%B3%95%E5%90%8C%E5%90%8D%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">SDK二次开发遇到Delegate方法同名问题</a>
+          SDK二次开发遇到Delegate方法同名问题
         </h1>
 
         <div class="post-meta">
@@ -216,7 +218,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近公司准备开发的一款阅读App中需要同时加入“广点通”以及“穿山甲”平台的广告SDK，由于这款App还涉及到第三方一起开发，所以要求把广告模块合并成一个SDK进行统一管理。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近公司准备开发的一款阅读App中需要同时加入“广点通”以及“穿山甲”平台的广告SDK，由于这款App还涉及到第三方一起开发，所以要求把广告模块合并成一个SDK进行统一管理。</p>
 <h1 id="重载-amp-重写的概念"><a href="#重载-amp-重写的概念" class="headerlink" title="重载&amp;重写的概念"></a>重载&amp;重写的概念</h1><p><strong>重载（overload）：</strong>函数名相同，函数的参数列表不同(包括<strong>参数个数</strong>和<strong>参数类型</strong>)，至于<strong>返回类型可同可不同</strong>。重载既可以发生在同一个类的不同函数之间，也可发生在父类子类的继承关系之间，其中发生在父类子类之间时要注意与重写区分开。</p>
 <p>iOS Objective-C中重载，多见的是方法名相同，但参数个数/参数描述不同。举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#import &quot;CunstomView.h&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">@implementation CunstomView</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 方法一</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">- (id)initWithFrame:(CGRect)frame&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    self &#x3D; [super initWithFrame:frame]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    if (self) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    return self;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 方法二重载方法一</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">- (id)initWithFrame:(CGRect)frame</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">              model:(NSDictionary *)model&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    self &#x3D; [super initWithFrame:frame];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    if (self) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    return self;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">@end</span></pre></td></tr></table></figure>
@@ -235,255 +237,33 @@
 
 
 <h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><h3 id="待续…"><a href="#待续…" class="headerlink" title="待续…"></a>待续…</h3>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://linlufeng.github.io/2019/12/06/SDK-Develop-for-iOS/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="linlufeng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linlufeng">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/06/SDK-Develop-for-iOS/" class="post-title-link" itemprop="url">SDK Develop for iOS</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-06 15:43:13" itemprop="dateCreated datePublished" datetime="2019-12-06T15:43:13Z">2019-12-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-10 03:18:14" itemprop="dateModified" datetime="2019-12-10T03:18:14Z">2019-12-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>SDK即（<strong>Software Development Kit</strong>）的缩写，意思是软件开发工具包。它能够帮助开发者在软件中快速构需要的功能模块，而仅仅只需要写入少量的代码。在软件开发过程中，你一定有过这样的场景：A项目中的功能某块功能曾经在B项目中也出现过，重写的话会造成公司资源的严重浪费。有一定规模的公司，生产过程中往往会累积很多技术经验和成果，这时候选择将一些通用的成果封装成SDK，可以满足公司在各种业务场景下的需要，快速组建app。</p>
-<h1 id="iOS-SDK"><a href="#iOS-SDK" class="headerlink" title="iOS SDK"></a>iOS SDK</h1><h2 id="iOS-SDK分类"><a href="#iOS-SDK分类" class="headerlink" title="iOS SDK分类"></a>iOS SDK分类</h2><p>iOS SDK一般可以分为两大类：一类是<strong>.framework</strong>和<strong>.a</strong>另外一类iOS系统自带的<strong>.dylib</strong>(<strong>.tbd</strong>)。出于<strong>安全</strong>以及绕过<strong>审核</strong>等原因苹果不允许开发者使用<strong>.dylib</strong>、<strong>.tbd</strong>方式的库进行开发，所以不在文中讨论这类库文件，这里只讨论<strong>.framework</strong>和<strong>.a</strong>的开发和使用。</p>
-<h2 id="framework和-a"><a href="#framework和-a" class="headerlink" title=".framework和.a"></a>.framework和.a</h2><p>这里有一个误区，不少人认为：<strong>.framework</strong>是属于动态库<strong>.a</strong>属于静态库。<strong>.a</strong>是静态库这边没有太大疑问，其实<strong>.framework</strong>是静态库还是动态库主要和<strong>Xcode–&gt;Buld Setting–&gt;Linking–&gt;Mach-O Type</strong>配置选项有关，即<strong>Static Library</strong>用于编译静态和<strong>Dynamic Library</strong>用于编译动态库。在使用静态库时，把库拖进工程，设置好<strong>library search path</strong>即可使用；在使用动态库时，多一个步骤，要在<strong>Build Settings–&gt;General–&gt;Embeeded Binaries</strong>中<strong>add</strong>一下，否则应用启动时会因为找不到文件而崩溃。另外选择<strong>Static Library</strong>方式打包出来的库文件通常要比选择<strong>Dynamic Library</strong>方式打包出来的库文件体积要大，<strong>Static Library</strong>方式打包出来的库会被一起编译Link进应用程序的可执行二进制文件中，<strong>Dynamic Library</strong>方式打包出来的库只是被完整地拷贝到应用的沙盒里。</p>
-<h2 id="如何制作iOS-SDK"><a href="#如何制作iOS-SDK" class="headerlink" title="如何制作iOS SDK"></a>如何制作iOS SDK</h2><p>这边以<strong>.framework</strong>为例</p>
-<ol>
-<li><p>新建工程-选择Framework</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step1.png" alt="step1"></p>
-</li>
-</ol>
-<ol start="2">
-<li><p>为你的工程取一个漂亮的名字</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step2.png" alt="step2"></p>
-</li>
-</ol>
-<ol start="3">
-<li><p>选择Deployment info(即SDK运行环境)</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step3.png" alt="step3"></p>
-</li>
-</ol>
-<ol start="4">
-<li><p>选择Xcode–&gt;Buld Setting–&gt;Linking–&gt;Mach-O Type，这边我选择Static Library</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step4.png" alt="step4"></p>
-</li>
-</ol>
-<ol start="5">
-<li><p>导入或新建你的业务代码</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step5.png" alt="step5"></p>
-</li>
-</ol>
-<ol start="6">
-<li><p>设置要暴露的头文件</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step6-1.png" alt="step6-1"></p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step6-2.png" alt="step6-2"></p>
-</li>
-</ol>
-<ol start="7">
-<li><p>设置工程依赖的库文件</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step7.png" alt="step7"></p>
-</li>
-</ol>
-<ol start="8">
-<li><p>Build编译</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step8-1.png" alt="step8-1"></p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step8-2.png" alt="step8-2"></p>
-</li>
-</ol>
-<ol start="9">
-<li><p>Lipo 命令合并真机&amp;模拟器的库文件</p>
-<p><img src="/2019/12/06/SDK-Develop-for-iOS/step9.png" alt="step9"></p>
-</li>
-</ol>
-<p>   选择工程目录Products–&gt;had.framework–&gt;Show in Finder找到最终生成文件目录，开打终端找到products目录合并模拟器&amp;真机库文件。</p>
-   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cd /Users/lufenglin/Library/Developer/Xcode/DerivedData/hsad-ghfesjzgbkhknjgxibruriubnqiq/Build/Products </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">lipo -create ./Release-iphoneos/hsad.framework/hsad ./Release-iphonesimulator/hsad.framework/hsad -output hsad</span></pre></td></tr></table></figure>
-
-
-
-<h1 id="开发SDK期间遇到一些问题"><a href="#开发SDK期间遇到一些问题" class="headerlink" title="开发SDK期间遇到一些问题"></a>开发SDK期间遇到一些问题</h1><h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><p><strong>精简</strong>：SDK接口设计的一个最重要原则就是精简，时刻换位思考自己是一名SDK使用开发者，我拿到这份SDK该从哪里上手使用。尽量让开发者用最少的代码完成所想要的功能，想想这是一件多么令人自豪的事情。接口暴露，只为开发者提供最基本能用掉SDK业务的接口，其它SDK内部逻辑处理相关业务一律封装屏蔽起来不对外暴露。</p>
-<p><strong>命名</strong>：接口命名一定要规范，诸如iOS提供的UIKit头文件，通过方法名称就知道这个方法是做啥用处。</p>
-<p><strong>注释</strong>：头文件注释要写清楚，该方法的具体作用表现、各个参数是代表什么、返回什么样的结果，一份好的头文件注释，基本上可以当作SDK接入文档来使用。</p>
-<p><strong>@property</strong> <strong>关键字</strong>：善用@property关键字，例如一些接口在设计的时候，为防止开发者不小心修改，可以使用<strong>readonly</strong>关键字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy, readonly) NSString *adNumber;          &#x2F;&#x2F; 广告编号</span></pre></td></tr></table></figure>
-
-<p><strong>extern</strong> 关键字：一些提供对外使用的字符串常量接口，可以使用extern关键字。</p>
-<p><strong>NS_ENUM</strong> 枚举：解决意义不明确，使代码更优雅。如定义广告执行类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSInteger, HSADActionType) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeShow &#x3D; 1,                   &#x2F;&#x2F; 展示</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeOpen &#x3D; 2,                   &#x2F;&#x2F; 打开链接</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeAndroid &#x3D; 3,                &#x2F;&#x2F; 安卓下载无效</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeDownload &#x3D; 4,               &#x2F;&#x2F; iOS应用下载</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeLaunchApp &#x3D; 5,              &#x2F;&#x2F; 拉起app</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeLaunchMiniProgram &#x3D; 6,      &#x2F;&#x2F; 唤起小程序</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    HSADActionTypeLaunchLogic &#x3D; 7             &#x2F;&#x2F; 智能唤端</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure>
-
-<p><strong>参数校验</strong>：SDK接入过程中往往会出现这样一种情况，接口文档会让传入指定的参数，但是我们的开发者并不一定会按所要求的参数来传，这时候就需要对传入的参数进行校验。<strong>NSAssert</strong>是一个很有用的宏，用于开发阶段调试程序中的Bug，通过为NSAssert()传递条件表达式来断定是否属于Bug，满足条件返回真值，程序继续运行，如果返回假值，则抛出异常，并且可以自定义异常描述。这样开发者就会得到反馈，并按要求重新传入正确的参数。</p>
-<p><strong>弃用的接口</strong>：由于SDK业务的变更对于一想老旧想要放弃使用的接口，可以使用<strong>DEPRECATED</strong>关键字来申明接口，而不是直接将接口从头文件中删除。这样编译器就会提示开发者相关接口可能被弃用，请使用最新的接口。</p>
-<p><strong>版本号</strong>：和开发App一样，版本号主要是用于记录SDK各个版本开发内容以及修复哪些Bug，亦可以标识线上各版本运行情况，分析日志埋点，帮助优化SDK。</p>
-<h2 id="是否使用第三方库"><a href="#是否使用第三方库" class="headerlink" title="是否使用第三方库"></a>是否使用第三方库</h2><p>SDK开发过程中，你可能也会使用到网络、数据库、UI等各种各样的模块。此时你可以选择iOS自带的API来实现功能，也可以嵌套成熟的第三方库，当然我建议能自己开发的尽量自己开发，毕竟这样我们才能提高自己的开发能力。根据是否把第三方代码打包进我们自己开发的SDK，我将它分为两类<strong>合并</strong>和<strong>引用</strong>：</p>
-<ul>
-<li><p><strong>合并</strong></p>
-<p>如果一定要使用第三方的代码，最好是拿到开源代码，修改为和你的工程命名一致的命名，不然代码在编译的时候很容易和其它工程中文件相冲突。如果第三库不是源代码，而是以SDK形式提供的，那么在拖入工程的时候选择”<strong>Add to Targets</strong>“将第三方库一起合并进自己的SDK。</p>
-</li>
-<li><p><strong>引用</strong></p>
-<p>引用顾名思义是不将第三方库合并到自己的SDK中的，在工程不勾选”Add to Targets”，仅在要使用第三方库的地方 <strong>import</strong> 头文件然后调用相关的方法，在发布自己SDK的时候，将第三方SDK以它原来的面貌，一起发布给开发者使用。 </p>
-</li>
-</ul>
-<h2 id="埋点-日志"><a href="#埋点-日志" class="headerlink" title="埋点/日志"></a>埋点/日志</h2><p>一个好的日志接口，可以有效的帮助自调试开发过程中出现的各式各样问题。这里我将自己开发过程中的日志分为三类：</p>
-<ul>
-<li><p><strong>Debug</strong>日志，只供自己开发SDK过程中查看。</p>
-</li>
-<li><p><strong>Error</strong>日志，SDK运行过程中出现一些不满足预期结果的日志。</p>
-</li>
-<li><p><strong>User</strong>日志，用来提供给开发者查看SDK运行情况。</p>
-</li>
-</ul>
-<p>也可以将日志输出到<strong>.txt</strong>文本文件中，在适当条件下，上传到服务器进行分析。</p>
-<p><strong>埋点</strong> 是对用户使用情况的一系列分析，一般最简单的是对相关事件event触发次数进行累加并上报，复杂一些的还可以记录用户使用页面的路径情况，页面停留时长等等。</p>
-<h2 id="SDK资源包-bunlde-文件"><a href="#SDK资源包-bunlde-文件" class="headerlink" title="SDK资源包 .bunlde 文件"></a>SDK资源包 .bunlde 文件</h2><p>SDK开发中会使用到诸如图片等一些资源文件，我们可以将它们一起打包到<strong>xxx.bundle</strong>文件中去。</p>
-<p>以图片为例，通过下面方式在代码中获取图片资源：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">NSString *closePath &#x3D; [[NSBundle mainBundle] pathForResource:@&quot;hsad.bundle&#x2F;close&quot; ofType:@&quot;png&quot;];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">UIImage *closeImage &#x3D; [UIImage imageWithContentsOfFile:closePath];</span></pre></td></tr></table></figure>
-
-
-
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><ul>
-<li><p><strong>SDK接口设计文档</strong></p>
-<p>SDK设计文档，是在开发的之初定义的。它是SDK开发的一个概要设计，包含接功能模块的设计、对外接口的定义等。</p>
-</li>
-<li><p><strong>SDK使用文档</strong></p>
-<p>SDK使用文档，是一份使用说明说，目的在于清晰并且快速的教会开发者，这套SDK能干嘛以及如何使用，并附有示例代码（<strong>SDK SAMPLE</strong>）。</p>
-</li>
-</ul>
-<h2 id="测试-维护"><a href="#测试-维护" class="headerlink" title="测试/维护"></a>测试/维护</h2><p>SDK测试以及维护的依据，都源自SDK设计文档。</p>
-<h2 id="本文参考："><a href="#本文参考：" class="headerlink" title="本文参考："></a>本文参考：</h2><p><a href="https://www.jianshu.com/p/71c75c287d26" target="_blank" rel="noopener">https://www.jianshu.com/p/71c75c287d26</a></p>
-<p><a href="https://www.jianshu.com/p/cf86532be5e4" target="_blank" rel="noopener">https://www.jianshu.com/p/cf86532be5e4</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://linlufeng.github.io/2019/12/04/Hello-Hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="linlufeng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linlufeng">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/04/Hello-Hexo/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-12-04 11:22:19 / 修改时间：05:56:33" itemprop="dateCreated datePublished" datetime="2019-12-04T11:22:19Z">2019-12-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hello World！My name is lin lufeng，an iOS Developer.</p>
-<p>国际惯例，技术开发人学习新的东西，先从一句Hello World开始。</p>
-<p>本博客是参考网上<a href="https://eirunye.github.io/2018/09/01/Hexo搭建GitHub博客—初级一/#more" target="_blank" rel="noopener" title="教程">教程</a>通过<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener" title="Hexo">Hexo</a>+<a href="https://github.com" target="_blank" rel="noopener" title="Github">Github</a>搭建起来的，🙏感谢大佬们。刚毕业那会用新浪博客写一些技术记录或者摘抄，后来由于太懒一年左右就放弃不更新了，一些零零散散写过的控件也只保留在自己的硬盘里。想要重新养成好的学习和工作习惯，所以搭建了该博客。</p>
-
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/06/SDK-Develop-for-iOS/" rel="prev" title="SDK Develop for iOS">
+      <i class="fa fa-chevron-left"></i> SDK Develop for iOS
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -512,6 +292,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载-amp-重写的概念"><span class="nav-number">2.</span> <span class="nav-text">重载&amp;重写的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的问题"><span class="nav-number">3.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">4.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#待续…"><span class="nav-number">4.0.1.</span> <span class="nav-text">待续…</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
